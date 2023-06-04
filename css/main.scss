@@ -1,0 +1,17 @@
+*{
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+.hidden{
+    display: none;
+}
+
+body{
+    background-color: white;
+
+}
+
+@import "./landingpage";
+@import "./input";
+@import "./card";

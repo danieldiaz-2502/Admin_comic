@@ -1,0 +1,116 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+* {
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+}
+
+.hidden {
+  display: none;
+}
+
+body {
+  background-color: white;
+}
+
+.landingpage {
+  display: flex;
+  flex-direction: column;
+  background-color: #FFE4BB;
+  padding: 0px 20px;
+  width: 20%;
+  height: 370px;
+  justify-content: space-around;
+  border-radius: 22px 22px 22px 22px;
+  margin-left: 40%;
+  margin-right: 40%;
+  margin-top: 100px;
+}
+.landingpage__background {
+  width: 100%;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-image: url("../images/institucion.png");
+}
+.landingpage__background--credentials {
+  width: 100%;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-image: url("../images/backgorund_dark.jpg");
+}
+.landingpage__logo {
+  padding: 0;
+  width: 30%;
+}
+.landingpage__btn {
+  display: flex;
+  justify-content: space-around;
+  width: 48%;
+}
+.landingpage__btn--send {
+  background: none;
+  border: 0;
+  width: 100%;
+  height: 60px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  background-image: url("../images/iniciar_btn.png");
+}
+.landingpage__btn--send:hover {
+  background-image: url("../images/iniciar_orange_btn.png");
+}
+.landingpage__img {
+  width: 100%;
+  height: 60px;
+  background-image: url("../images/iniciar_title.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+
+.input {
+  width: 100%;
+  height: 50px;
+}
+.input__label {
+  width: 100%;
+  font-weight: 600;
+  padding-top: 20px;
+}
+
+.card {
+  background-color: bisque;
+  width: 150px;
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 20px;
+  justify-content: center;
+}
+.card__cards {
+  display: flex;
+  width: 50%;
+  justify-content: space-evenly;
+}
+.card__user {
+  background: white;
+  width: 120px;
+  height: 90px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 8px;
+  justify-content: center;
+  margin: 20px 0px;
+}/*# sourceMappingURL=main.css.map */

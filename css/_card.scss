@@ -1,0 +1,32 @@
+.card{
+
+    background-color: bisque;
+    width: 150px;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 20px;
+    justify-content: center;
+
+    &__cards{
+        display: flex;
+        width: 50%;
+        justify-content: space-evenly;
+    }
+
+    &__user{
+        background: white;
+        width: 120px;
+        height: 90px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-radius: 8px;
+        justify-content: center;
+        margin: 20px 0px;
+        
+
+    }
+
+}
