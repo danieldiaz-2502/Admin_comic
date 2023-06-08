@@ -51,6 +51,15 @@ let contadorInvitarlo = 0;
 // Variables decision 4
 let contadorBuscar = 0;
 let contadorIrse = 0;
+let contadorBuscar2 = 0
+let contadorIrse2 = 0
+
+let contadorTotalBuscar = 0
+let contadorTotalIrse = 0
+
+
+let contadorUsuarios = 0
+
 
 
 function calcularPorcentajes(variable1, variable2, numDatos) {
@@ -79,6 +88,10 @@ onValue(dataRef, (snapshot) => {
     // Iterar sobre cada objeto en el listado
     for (const key in data) {
       const objeto = data[key];
+
+      if (objeto.hasOwnProperty('name')) {
+         contadorUsuarios++
+      }
       // Verificar si la variable "cafeteria" existe en el objeto
       if (objeto.hasOwnProperty('desicion1')) {
         const decision1 = objeto.desicion1;
@@ -115,17 +128,30 @@ onValue(dataRef, (snapshot) => {
           contadorIrse++;
         }
       }
+
+
+      if (objeto === 'salon') {
+        contadorBuscar2++;
+     }
+
+     if (objeto === 'casa') {
+      contadorIrse2++;
+   }
     }
 
-    let resultado1 = calcularPorcentajes(contadorAlmorzar,contadorHablar, numDatos)
-    let resultado2 = calcularPorcentajes(contadorAcertiva,contadorRelajada, numDatos)
-    let resultado3 = calcularPorcentajes(contadorNo,contadorInvitarlo, numDatos)
-    let resultado4 = calcularPorcentajes(contadorBuscar,contadorIrse, numDatos)
+    contadorTotalBuscar = contadorBuscar+contadorBuscar2
+    contadorTotalIrse = contadorIrse+contadorIrse2
+
+
+    let resultado1 = calcularPorcentajes(contadorAlmorzar,contadorHablar, contadorUsuarios)
+    let resultado2 = calcularPorcentajes(contadorAcertiva,contadorRelajada, contadorUsuarios)
+    let resultado3 = calcularPorcentajes(contadorNo,contadorInvitarlo, contadorUsuarios)
+    let resultado4 = calcularPorcentajes(contadorTotalBuscar,contadorTotalIrse, contadorUsuarios)
 
 
 
     numerUsers.innerHTML = `
-      <p>${numDatos}</p>
+      <p>${contadorUsuarios}</p>
     `;
 
     resultadosElement.innerHTML = `
@@ -161,9 +187,8 @@ onValue(dataRef, (snapshot) => {
   });
 
   logOut.addEventListener('click',()=>{
-
-    localStorage.removeItem("stateUser")
     window.location.replace("index.html")
+    localStorage.removeItem("stateUser")
   
   
   })
