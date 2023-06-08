@@ -17,6 +17,15 @@ const firebaseConfig = {
 
 const dataRef = ref(database, 'comic');
 
+let user = localStorage.getItem("stateUser")
+
+if(user === null){
+
+  location.href="credentials.html"
+  
+}
+
+const logOut = document.querySelector('.logOut')
 const resultadosElement = document.getElementById('resultados1');
 const resultados2 = document.getElementById('resultados2');
 const resultados3 = document.getElementById('resultados3');
@@ -44,6 +53,21 @@ let contadorBuscar = 0;
 let contadorIrse = 0;
 
 
+function calcularPorcentajes(variable1, variable2, numDatos) {
+  var porcentaje1 = (variable1 * 100 / numDatos).toFixed(1);
+  var porcentaje2 = (variable2 * 100 / numDatos).toFixed(1);
+
+  var sumaDecision = (parseFloat(porcentaje1) + parseFloat(porcentaje2)).toFixed(1);
+
+  var porcentajeFaltante = (100 - sumaDecision).toFixed(1);
+
+  return {
+    porcentaje1: porcentaje1 + "%",
+    porcentaje2: porcentaje2 + "%",
+    sumaDecision: sumaDecision + "%",
+    porcentajeFaltante: porcentajeFaltante + "%"
+  };
+}
 
 // Escuchar los cambios en los datos de la ubicación
 onValue(dataRef, (snapshot) => {
@@ -93,31 +117,53 @@ onValue(dataRef, (snapshot) => {
       }
     }
 
+    let resultado1 = calcularPorcentajes(contadorAlmorzar,contadorHablar, numDatos)
+    let resultado2 = calcularPorcentajes(contadorAcertiva,contadorRelajada, numDatos)
+    let resultado3 = calcularPorcentajes(contadorNo,contadorInvitarlo, numDatos)
+    let resultado4 = calcularPorcentajes(contadorBuscar,contadorIrse, numDatos)
+
+
+
     numerUsers.innerHTML = `
       <p>${numDatos}</p>
     `;
 
     resultadosElement.innerHTML = `
-     <p><b>Decision 1</b></p>
-      <p>Almorzar: ${contadorAlmorzar}</p>
-      <p>Hablar: ${contadorHablar}</p>
+     <p class="card__text"><b>Decisión 1</b></p>
+      <p class="card__text">Almorzar: ${resultado1.porcentaje1}</p>
+      <p class="card__text">Hablar: ${resultado1.porcentaje2}</p>
+      <p class="card__text">No contestan: ${resultado1.porcentajeFaltante}</p>
+
     `;
 
     resultados2.innerHTML = `
-    <p><b> Decision 2</b></p>
-     <p>Acertiva: ${contadorAcertiva}</p>
-     <p>Relajada: ${contadorRelajada}</p>
+    <p class="card__text"><b> Decisión 2</b></p>
+     <p class="card__text">Acertiva: ${resultado2.porcentaje1}</p>
+     <p class="card__text">Relajada: ${resultado2.porcentaje2}</p>
+
    `;
 
    resultados3.innerHTML = `
-    <p><b> Decision 3</b></p>
-     <p>Ignorar: ${contadorNo}</p>
-     <p>Invitar: ${contadorInvitarlo}</p>
+    <p class="card__text"><b> Decisión 3</b></p>
+     <p  class="card__text">Ignorar: ${resultado3.porcentaje1}</p>
+     <p class="card__text">Invitar: ${resultado3.porcentaje2}</p>
+     <p  class="card__text">No contestan: ${resultado3.porcentajeFaltante}</p>
+
    `;
 
    resultados4.innerHTML = `
-    <p><b> Decision 4</b></p>
-     <p>Casa: ${contadorBuscar}</p>
-     <p>Salon: ${contadorIrse}</p>
+    <p  class="card__text"><b> Decisión 4</b></p>
+     <p  class="card__text">Casa: ${resultado4.porcentaje1}</p>
+     <p  class="card__text">Salón: ${resultado4.porcentaje2}</p>
+     <p  class="card__text">No contestan: ${resultado4.porcentajeFaltante}</p>
+
    `;
   });
+
+  logOut.addEventListener('click',()=>{
+
+    localStorage.removeItem("stateUser")
+    location.href="credentials.html"
+  
+  
+  })
