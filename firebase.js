@@ -21,7 +21,7 @@ let user = localStorage.getItem("stateUser")
 
 if(user === null){
 
-  location.href="credentials.html"
+  window.location.href="credentials.html"
   
 }
 
@@ -163,7 +163,7 @@ onValue(dataRef, (snapshot) => {
   logOut.addEventListener('click',()=>{
 
     localStorage.removeItem("stateUser")
-    location.href="credentials.html"
+    window.location.href="credentials.html"
   
   
   })

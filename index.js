@@ -8,8 +8,7 @@ userForm.addEventListener('submit',(e)=>{
 
     if(userForm.email.value === "daniel@gmail.com" & userForm.password.value === "123456"){
         localStorage.setItem("stateUser", true)
-        location.href = "main.html"
-        
+        window.location.href="main.html"        
     }else{
         alert("incorrecto")
     }
